@@ -15,7 +15,9 @@
         <module>eureka-server</module>
 		<module>clients</module>
 		<module>notification</module>
-	</modules>
+		<module>api-gateway</module>
+        <module>rabbitmq</module>
+    </modules>
 
     <name>amigoscode-microservices</name>
 
