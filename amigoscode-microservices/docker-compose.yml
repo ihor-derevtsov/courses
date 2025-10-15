@@ -1,0 +1,24 @@
+services:
+  postgres:
+    container_name: amigoscode_microservices_dev_postgres
+    image: postgres # latest is default tag
+    environment:
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: amigoscode_microservices_dev # creates initial db
+      PGDATA: /data/postgres # changes default location of db files
+    ports:
+      - "5432:5432"
+    volumes:
+      - amigoscode_microservices_dev_postgres_data:/data/postgres # connect volume to the PGDATA location
+      - ./docker_compose_init:/docker-entrypoint-initdb.d # creates bind mount to run init scripts
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  amigoscode_microservices_dev_postgres_data: # creates a volume to persist data on the machine
