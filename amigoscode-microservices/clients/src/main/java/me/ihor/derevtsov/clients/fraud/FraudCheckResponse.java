@@ -1,4 +1,4 @@
-package me.ihor.derevtsov.customer;
+package me.ihor.derevtsov.clients.fraud;
 
 public record FraudCheckResponse(Boolean isFraudster) {
 }

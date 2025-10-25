@@ -23,6 +23,7 @@ spring:
     show-sql: true
 
 # Eureka client configuration
+# Also add -Djava.rmi.server.hostname=127.0.0.1 to VM options on VPN if needed
 eureka:
   client:
     service-url:
