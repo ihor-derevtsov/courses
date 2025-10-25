@@ -1,3 +1,7 @@
 ## 🏗️ Architecture
 
-![img.png](customer/src/main/resources/static/img.png)
+![img.png](static/architecture.png)
+
+## 🏗️ Eureka Server usage
+
+![img.png](static/eureka-server.png)
