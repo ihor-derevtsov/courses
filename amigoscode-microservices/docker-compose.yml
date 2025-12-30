@@ -1,7 +1,7 @@
 services:
   postgres:
     container_name: amigoscode_microservices_dev_postgres
-    image: postgres # latest is default tag
+    image: postgres:17 # latest is default tag, here 17 used
     environment:
       POSTGRES_USER: appuser
       POSTGRES_PASSWORD: password

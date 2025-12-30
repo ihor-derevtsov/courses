@@ -1,8 +1,9 @@
+server:
+  port: 8761
+  address: 0.0.0.0
 spring:
   application:
     name: eureka-server
-server:
-  port: 8761
 eureka:
   client:
     # This module is a Eureka server, it does not need to register itself or fetch registry

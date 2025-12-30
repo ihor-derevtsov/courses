@@ -21,7 +21,6 @@ public class CustomerService {
         customerRepository.saveAndFlush(customer);
         // TODO: check if email valid
         // TODO: check if email not taken
-        // TODO: check if fraudster
         FraudCheckResponse fraudCheckResponse = fraudClient.isFraudster(customer.getId());
 
 
