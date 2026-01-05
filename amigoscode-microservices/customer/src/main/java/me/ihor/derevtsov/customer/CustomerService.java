@@ -3,6 +3,8 @@ package me.ihor.derevtsov.customer;
 import lombok.AllArgsConstructor;
 import me.ihor.derevtsov.clients.fraud.FraudCheckResponse;
 import me.ihor.derevtsov.clients.fraud.FraudClient;
+import me.ihor.derevtsov.clients.notification.NotificationClient;
+import me.ihor.derevtsov.clients.notification.NotificationRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,6 +13,7 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
     private final FraudClient fraudClient;
+    private final NotificationClient notificationClient;
 
     public void registerCustomer(CustomerRegistrationRequest customerRegistrationRequest) {
         Customer customer = Customer.builder()
@@ -27,6 +30,13 @@ public class CustomerService {
         if (fraudCheckResponse != null && fraudCheckResponse.isFraudster()) {
             throw new IllegalStateException("Fraudster!");
         }
-        // TODO: send notification
+        // TODO: make it async, add to queue
+        notificationClient.sendNotification(
+                new NotificationRequest(
+                        customer.getId(),
+                        customer.getEmail(),
+                        String.format("Hi dear %s, welcome to course", customer.getFirstName())
+                )
+        );
     }
 }
