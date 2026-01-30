@@ -1,6 +1,5 @@
 server:
   port: 8030
-  address: 0.0.0.0
 spring:
   application:
     name: notification
@@ -21,7 +20,6 @@ spring:
       # create-drop - the same as create, but drops the schema when the session ends
       ddl-auto: create-drop
     show-sql: true
-
 # Eureka client configuration
 # Also add -Djava.rmi.server.hostname=127.0.0.1 to VM options on VPN if needed
 eureka:

@@ -15,6 +15,12 @@ services:
     networks:
       - postgres
     restart: unless-stopped
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    command: --logging.level.zipkin2=DEBUG
 
 networks:
   postgres:
