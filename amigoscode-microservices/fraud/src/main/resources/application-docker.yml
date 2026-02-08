@@ -1,10 +1,10 @@
 server:
-  port: 8010
+  port: 8020
 spring:
   application:
-    name: customer
+    name: fraud
   datasource:
-    url: jdbc:postgresql://localhost:5432/customer
+    url: jdbc:postgresql://postgres:5432/fraud
     username: appuser
     password: password
   jpa:
@@ -20,16 +20,13 @@ spring:
       # create-drop - the same as create, but drops the schema when the session ends
       ddl-auto: create-drop
     show-sql: true
-  rabbitmq:
-    addresses: localhost:5672
   zipkin:
-    base-url: http://localhost:9411/
-
+    base-url: http://zipkin:9411/
 # Eureka client configuration
 # Also add -Djava.rmi.server.hostname=127.0.0.1 to VM options on VPN if needed
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-server:8761/eureka/
       fetch-registry: true
       register-with-eureka: true
