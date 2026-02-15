@@ -1,11 +1,11 @@
 server:
-  port: 8030
+  port: 8010
 spring:
   application:
-    name: notification
+    name: customer
   datasource:
-    url: jdbc:postgresql://postgres:5432/notification
-    username: appuser
+    url: jdbc:postgresql://postgres:5432/customer
+    username: amigoscode
     password: password
   jpa:
     properties:
@@ -24,6 +24,7 @@ spring:
     addresses: rabbitmq:5672
   zipkin:
     base-url: http://zipkin:9411/
+
 # Eureka client configuration
 # Also add -Djava.rmi.server.hostname=127.0.0.1 to VM options on VPN if needed
 eureka:
@@ -33,11 +34,3 @@ eureka:
       fetch-registry: true
       register-with-eureka: true
       enabled: false
-# RabbitMQ
-rabbitmq:
-  exchanges:
-    internal: internal.exchange
-  queue:
-    notification: queue
-  routing-keys:
-    internal-notification: internal.notification.routing-key
