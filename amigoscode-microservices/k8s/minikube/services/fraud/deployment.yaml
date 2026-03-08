@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: customer
+  name: fraud
   labels:
-    app: customer
+    app: fraud
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: customer
+      app: fraud
   template:
     metadata:
-      name: customer
+      name: fraud
       labels:
-        app: customer
+        app: fraud
     spec:
       containers:
-        - name: customer
-          image: ihorderevtsov/customer:latest
+        - name: fraud
+          image: ihorderevtsov/fraud:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 8010
+            - containerPort: 8020
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: kube
