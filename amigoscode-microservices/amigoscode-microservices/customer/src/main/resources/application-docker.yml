@@ -1,0 +1,36 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: customer
+  datasource:
+    url: jdbc:postgresql://postgres:5432/customer
+    username: appuser
+    password: password
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    hibernate:
+      # none - does nothing
+      # validate - validates the schema, checks if tables exist, makes no changes to the database
+      # update - updates the schema, creates/updates tables and columns as necessary
+      # create - removes existing schema and creates a new one, destroying previous data
+      # create-drop - the same as create, but drops the schema when the session ends
+      ddl-auto: create-drop
+    show-sql: true
+  rabbitmq:
+    addresses: rabbitmq:5672
+  zipkin:
+    base-url: http://zipkin:9411/
+
+# Eureka client configuration
+# Also add -Djava.rmi.server.hostname=127.0.0.1 to VM options on VPN if needed
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+      fetch-registry: true
+      register-with-eureka: true
+      enabled: false
